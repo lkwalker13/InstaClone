@@ -51,7 +51,7 @@ class SignupViewController: UIViewController {
     func signUpPressed(){
         print(imageSelected)
         if let email = emailTextfield.text, let password = passwordTextfield.text,let fullname = fullNameTextfield.text, let userName = userNameTextfield.text {
-            if String.asciiOnly(fullname, lengthRange: 6...12) &&  String.asciiOnly(userName,lengthRange: 6...12) && imageSelected {
+            if String.asciiOnly(fullname, lengthRange: 6...12) && String.asciiOnly(userName,lengthRange: 6...12) && imageSelected {
                 print(fullname)
                 print(userName)
                 Auth.auth().createUser(withEmail: email, password: password) { [self] authResult, error in
@@ -59,27 +59,6 @@ class SignupViewController: UIViewController {
                         Toast(text: e.localizedDescription).show()
                     }else {
                         
-                        //                        guard let profileImage = self.addImageButton.imageView?.image  else{return}
-                        //                        guard  let uploadData = profileImage.jpegData(compressionQuality: 0.3)  else {return}
-                        //                                let filename = NSUUID().uuidString
-                        //                                let storageRef =  Storage.storage().reference().child("profile_image").child(filename)
-                        //                        storageRef.putData(uploadData, metadata: nil) { _, error in
-                        //                            if let e = error {
-                        //                                Toast(text: "Не удалось загрузить фото").show()
-                        //                                print(e.localizedDescription)
-                        //                            }else {
-                        //                                print("Загрузка прошла успешно")
-                        //                                storageRef.downloadURL { downloadURL, error in
-                        //                                    if let  e = error {
-                        //                                        print(e.localizedDescription)
-                        //                                    }else{
-                        //                                        guard let profileImageURL = downloadURL?.absoluteString else {return}
-                        //                                    }
-                        //                                }
-                        //                            }
-                        //
-                        //                        }
-                        print(email+fullname+userName+password)
                         Toast(text: K.HoldersAndLabels.succesSignUp).show()
                         self.navigationController?.pushViewController(LoginViewController(), animated: true)
                     }
@@ -120,6 +99,28 @@ class SignupViewController: UIViewController {
         view.addSubview(stackView)
         stackView.anchor(top: addImageButton.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 50, left: 40, bottom: 0, right: 40), size: .init(width: 0, height: 280))
     }
+    
+    func uploadImage(image:UIImage){
+        let storage =  Storage.storage().reference()
+        guard let imageData = image.pngData() else {
+            return
+        }
+        storage.child("logoImage/avatar.png").putData(imageData, metadata:nil) { _, error in
+            guard error == nil else {
+                print("Uploading failure")
+                return
+            }
+            storage.child("logoImage/avatar.png").downloadURL { url, error in
+                guard let url = url, error == nil else {
+                    return
+                }
+                let  urlString = url.absoluteString
+                
+                UserDefaults.standard.set(urlString, forKey: "url")
+                
+            }
+        }
+    }
 }
 
 // MARK: Extensions
@@ -137,6 +138,7 @@ extension SignupViewController : UIImagePickerControllerDelegate, UINavigationCo
         addImageButton.layer.borderWidth = 2
         addImageButton.layer.borderColor = UIColor.black.cgColor
         addImageButton.setImage(profileImage.withRenderingMode(.alwaysOriginal), for: .normal)
+        uploadImage(image: profileImage)
         self.dismiss(animated: true, completion: nil)
     }
 }
