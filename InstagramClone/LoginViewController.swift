@@ -67,10 +67,19 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         configureViewComponents()
         loginButton.addTarget(self, action: #selector(loginPressed), for: .touchUpInside)
         signUpButton.addTarget(self, action: #selector(signupPressed), for: .touchUpInside)
         facebookLoginButton.addTarget(self, action: #selector(facebookLoginPressed), for: .touchUpInside)
+        ifUserIsLogedIn()
+      
+    }
+    func ifUserIsLogedIn(){
+      if  Auth.auth().currentUser == nil {
+      }else {
+          self.navigationController?.pushViewController(FeedController(), animated: true)
+      }
     }
     
     @objc func loginPressed() {
@@ -80,6 +89,8 @@ class LoginViewController: UIViewController {
                 if let e = error{
                     Toast(text: e.localizedDescription).show()
                 }else {
+                    self.emailTextfield.text?.removeAll()
+                    self.passwordTextfield.text?.removeAll()
                     self.navigationController?.pushViewController(TimeLineViewController(), animated: true)
                 }
             }
@@ -87,15 +98,15 @@ class LoginViewController: UIViewController {
     }
     
     @objc func signupPressed() {
-        print("Pressed")
+     
         
-        navigationController?.pushViewController(SignupViewController(), animated: true)
+        self.navigationController?.pushViewController(SignupViewController(), animated: true)
         
     }
     
     @objc
     func facebookLoginPressed() {
-        print("Pressed")
+       
     }
     
     private func configureViewComponents(){

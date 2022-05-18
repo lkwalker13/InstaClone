@@ -12,6 +12,7 @@
 		ED2322232822FF2E007F1685 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2322222822FF2E007F1685 /* User.swift */; };
 		ED337AE52819B6EF00509E95 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED337AE42819B6EF00509E95 /* Utils.swift */; };
 		ED337AE72819CC7A00509E95 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED337AE62819CC7A00509E95 /* K.swift */; };
+		ED38B2A1282D1E4A00C4D8CA /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED38B2A0282D1E4A00C4D8CA /* FeedController.swift */; };
 		EDC3C9AA282168A3008575C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDC3C9A9282168A3008575C5 /* GoogleService-Info.plist */; };
 		EDC3C9AC28218790008575C5 /* TimeLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC3C9AB28218790008575C5 /* TimeLineViewController.swift */; };
 		EDDD50172816EF7900AB3F90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDD50162816EF7900AB3F90 /* AppDelegate.swift */; };
@@ -29,6 +30,7 @@
 		ED2322222822FF2E007F1685 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		ED337AE42819B6EF00509E95 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		ED337AE62819CC7A00509E95 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
+		ED38B2A0282D1E4A00C4D8CA /* FeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
 		EDC3C9A9282168A3008575C5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EDC3C9AB28218790008575C5 /* TimeLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineViewController.swift; sourceTree = "<group>"; };
 		EDDD50132816EF7900AB3F90 /* InstagramClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +71,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		ED38B29F282D1E1C00C4D8CA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				ED38B2A0282D1E4A00C4D8CA /* FeedController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		EDDD500A2816EF7900AB3F90 = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +100,7 @@
 		EDDD50152816EF7900AB3F90 /* InstagramClone */ = {
 			isa = PBXGroup;
 			children = (
+				ED38B29F282D1E1C00C4D8CA /* Controllers */,
 				EDDD502A2816F09300AB3F90 /* Login */,
 				EDDD50162816EF7900AB3F90 /* AppDelegate.swift */,
 				EDDD50182816EF7900AB3F90 /* SceneDelegate.swift */,
@@ -236,6 +247,7 @@
 				ED2322232822FF2E007F1685 /* User.swift in Sources */,
 				EDDD50172816EF7900AB3F90 /* AppDelegate.swift in Sources */,
 				EDDD50192816EF7900AB3F90 /* SceneDelegate.swift in Sources */,
+				ED38B2A1282D1E4A00C4D8CA /* FeedController.swift in Sources */,
 				ED337AE52819B6EF00509E95 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

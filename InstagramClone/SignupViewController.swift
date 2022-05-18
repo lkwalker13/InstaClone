@@ -29,6 +29,8 @@ class SignupViewController: UIViewController {
     
     private let passwordTextfield:UITextField  = UITextField.setupTextField(placeholder: K.HoldersAndLabels.passwordHolder, secureEntry: true)
     
+    
+    
     private let signupButton: UIButton = {
         let button = UIButton()
         button.setTitle(K.HoldersAndLabels.signInLabel, for: .normal)
@@ -60,7 +62,7 @@ class SignupViewController: UIViewController {
                     }else {
                         
                         Toast(text: K.HoldersAndLabels.succesSignUp).show()
-                        self.navigationController?.pushViewController(LoginViewController(), animated: true)
+                        self.navigationController?.popViewController(animated: true)
                     }
                 }
             }else {
